@@ -87,9 +87,9 @@ def linestyle_generator(colors=_colors, lines=_lines,
 
     while True:
         if not is_nothing:
-            color = color_cycle.next()
-            linestyle = line_cycle.next()
-            marker, hollow = marker_cycle.next()
+            color = next(color_cycle)
+            linestyle = next(line_cycle)
+            marker, hollow = next(marker_cycle)
             if hollow is None:  # only filled markers
                 mew = 1
                 mec = color
@@ -132,13 +132,13 @@ def nextlinestyle(no_line=False, is_line=True, is_marker=True, is_hollow=True):
     :return: dict of parameters of linestyle
     :rtype: dict
     """
-    color = colors.next()
-    linestyle = lines.next()
+    color = next(colors)
+    linestyle = next(lines)
     if(is_hollow):
-        marker = markersh.next()
+        marker = next(markersh)
     else:
-        marker = markers.next()
-    marker_type = marker_types.next()
+        marker = next(markers)
+    marker_type = next(marker_types)
     if marker_type:  # hollow mark
         mew = 1
         mec = color
